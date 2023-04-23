@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.0/css/bulma.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://js.stripe.com/v3/"></script>
+    <title>Payment</title>
+</head>
+<body>
+    <section class="section">
+        <div class="container">
+            <h1 class="title">Payment Options</h1>
+            <div class="columns">
+                <div class="column">
+                    <div class="card">
+                        <div class="card-content">
+                            <p class="title">Monthly Plan</p>
+                            <p class="subtitle">$5 par month</p>
+                            <p>This plan will give you unlimited access
+                                to the code explanation and fixing services every month.
+                                You will be charged $5 every month.</p>
+                        </div>
+                        <footer class="card_footer">
+                            <form action="/charge" method="post">
+                                <input type="hidden" name="plan" value="monthly">
+                                <input type="hidden" name="amount" value="500">
+                                <script
+                                    src="https://checkout.stripe.com/checkout.js"
+                                    class="stripe-button"
+                                    data-key="<YOUR_PUBLIC_KEY>"
+                                    data-amount="500"
+                                    data-name="Monthly Plan"
+                                    data-description="$5 per month"
+                                    data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
+                                    data-locale="auto"
+                                    data-zip-code="false">
+                                </script>
+                            </form>
+                        </footer>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="card">
+                        <div class="card-content">
+                            <p class="title">Quarterly Plan</p>
+                            <p class="subtitle">$12 par quarter</p>
+                            <p>This plan will give you unlimited access
+                                to the code explanation and fixing services every quarter.
+                                You will be charged $12 every quarter.</p>
+                        </div>
+                        <footer class="card_footer">
+                            <form action="/charge" method="post">
+                                <input type="hidden" name="plan" value="quarterly">
+                                <input type="hidden" name="amount" value="1200">
+                                <script
+                                    src="https://checkout.stripe.com/checkout.js"
+                                    class="stripe-button"
+                                    data-key="<YOUR_PUBLIC_KEY>"
+                                    data-amount="1200"
+                                    data-name="Quarterly Plan"
+                                    data-description="$12 per month"
+                                    data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
+                                    data-locale="auto"
+                                    data-zip-code="false">
+                                </script>
+                            </form>
+                        </footer>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="card">
+                        <div class="card-content">
+                            <p class="title">Annual Plan</p>
+                            <p class="subtitle">$50 par year</p>
+                            <p>This plan will give you unlimited access
+                                to the code explanation and fixing services every year.
+                                You will be charged $50 every year.</p>
+                        </div>
+                        <footer class="card_footer">
+                            <form action="/charge" method="post">
+                                <input type="hidden" name="plan" value="yearly">
+                                <input type="hidden" name="amount" value="5000">
+                                <script
+                                    src="https://checkout.stripe.com/checkout.js"
+                                    class="stripe-button"
+                                    data-key="<YOUR_PUBLIC_KEY>"
+                                    data-amount="5000"
+                                    data-name="Yearly Plan"
+                                    data-description="$50 per month"
+                                    data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
+                                    data-locale="auto"
+                                    data-zip-code="false">
+                                </script>
+                            </form>
+                        </footer>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

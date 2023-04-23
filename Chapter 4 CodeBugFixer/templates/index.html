@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Code Bug Fixer</title>
+    <style type="text/css">
+        body {
+            font-family: Arial sans-serif;
+            background-color: #f6f7f9;
+        }
+
+        .header {
+            background-color: #3b5998;
+            color: #ffffff;
+            padding: 15px;
+            text-align: center;
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .container {
+            display: flex;
+            justify-content: space-between;
+            padding: 15px;
+        }
+
+        .left-column, .right-column {
+            width: 49%;
+            padding: 15px;
+        }
+
+        textarea {
+            width: 100%;
+            height: 200px;
+            font-size: 16px;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #cccccc;
+            border-radius: 5px;
+            resize: none;
+        }
+
+        .fixed-code, .explanation {
+            background-color: #e9ebee;
+            color: #3b5998;
+            font-weight: bold;
+        }
+
+        .submit-button {
+            background-color: #3b5998;
+            color: #ffffff;
+            font-size: 18px;
+            font-weight: bold;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            margin-top: 15px;
+            cursor: pointer;
+        }
+
+        .submit-button:hover {
+            background-color:  #4b76be;
+        }
+
+    </style>
+</head>
+<body>
+<div class="header">
+    <h1>Code Bug Fixer</h1>
+</div>
+<form action="/" method="post">
+    <button class="submit-button" type="submit">Code Fix</button>
+    <div class="container">
+        <div class="left-column">
+            <textarea name="code" placeholder="Enter Code"></textarea>
+            <textarea name="error" placeholder="Enter Error"></textarea>
+        </div>
+        <div class="right-column">
+            <textarea class="fixed-code" name="fixed-code" placeholder="Fixed Code" readonly>{{ fixed_code }}</textarea>
+            <textarea class="explanation" name="explanation" placeholder="Explanation" readonly>{{ explanation }}</textarea>
+        </div>
+    </div>
+</form>
+</body>
+</html>
