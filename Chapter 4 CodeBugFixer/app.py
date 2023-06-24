@@ -128,7 +128,7 @@ def charge():
         source=request.form["stripeToken"]
     )
 
-    charge = stripe.Charge.create(
+    charge = stripe.PaymentIntent.create(
         customer=customer.id,
         amount=amount,
         currency="usd",
