@@ -44,8 +44,6 @@ def get_fingerprint():
 def get_usage_counter(fingerprint):
     conn = sqlite3.connect('app.db')
     c = conn.cursor()
-    c.execute('CREATE TABLE IF NOT EXISTS users '
-              '(fingerprint text, usage_counter int)')
     result = c.execute('SELECT usage_counter FROM users WHERE fingerprint=?',
                        [fingerprint]).fetchone()
     conn.close()
