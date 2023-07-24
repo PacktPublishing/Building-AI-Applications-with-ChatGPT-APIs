@@ -40,7 +40,7 @@ def reply():
         messages=[
             {"role": "user", "content": "You are a professional email writer"},
             {"role": "assistant", "content": "Ok"},
-            {"role": "user", "content": "Create a reply to this email:\n + Is the report ready?"}
+            {"role": "user", "content": f"Create a reply to this email:\n {email.Body}"}
         ]
     )
 
