@@ -14,6 +14,7 @@ model_ids = {
     "DAVINCI": {"model": "davinci", "cost": 0.02},
     "GPT3.5 TURBO": {"model": "gpt-3.5-turbo", "cost": 0.002},
     "GPT3.5 TURBO 0301": {"model": "gpt-3.5-turbo-0301", "cost": 0.002},
+    "GPT4": {"model": "gpt-4", "cost": 0.0045},
     "CURIE": {"model": "text-curie-001", "cost": 0.002},
     "BABBAGE": {"model": "text-babbage-001", "cost": 0.005},
 }
@@ -21,7 +22,7 @@ model_ids = {
 # Make API calls to the models and store the responses
 responses = {}
 for model_name, model_id in model_ids.items():
-    if "GPT3.5" not in model_name:
+    if "GPT" not in model_name:
         response = openai.Completion.create(
             engine=model_id["model"],
             prompt=prompt,
