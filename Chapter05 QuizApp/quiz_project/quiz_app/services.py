@@ -33,16 +33,20 @@ def generate_questions(text):
              f"Under the possible answers we should have the correct answer."
 
     # Generate questions using the ChatGPT API
-    response = openai.Completion.create(
-        engine='text-davinci-003',
-        prompt=prompt,
-        max_tokens=3500,
-        stop=None,
-        temperature=0.7
+    response = openai.ChatCompletion.create(
+        model="gpt-3.5-turbo",
+        messages=[
+            {"role": "user", "content": "You are professional questions writer."},
+            {"role": "assistant", "content": "Ok"},
+            {"role": "user", "content": f"{prompt}"}
+        ],
+        max_tokens = 3500,
+        stop = None,
+        temperature = 0.7
     )
 
     # Extract the generated questions from the API response
-    questions = response.choices[0].text
+    questions = response["choices"][0]["message"]["content"]
 
     # Generate a unique key for the question
     base_key = ' '.join(text.split()[:2])
