@@ -1,5 +1,6 @@
 import collections.abc
 import config
+
 assert collections
 import tkinter as tk
 from pptx import Presentation
@@ -8,25 +9,29 @@ import openai
 from io import BytesIO
 import requests
 
-
 # API Token
 openai.api_key = config.API_KEY
+
 
 def slide_generator(text, prs):
     prompt = f"Summarize the following text to a DALL-E image generation " \
              f"prompt: \n {text}"
 
-    model_engine = "text-davinci-003"
-    dlp = openai.Completion.create(
-        engine=model_engine,
-        prompt=prompt,
+    model_engine = "gpt-4"
+    dlp = openai.ChatCompletion.create(
+        model=model_engine,
+        messages=[
+            {"role": "user", "content": "I will ask you a question"},
+            {"role": "assistant", "content": "Ok"},
+            {"role": "user", "content": f"{prompt}"}
+        ],
         max_tokens=250,
         n=1,
         stop=None,
         temperature=0.8
     )
 
-    dalle_prompt = dlp.choices[0].text
+    dalle_prompt = dlp["choices"][0]["message"]["content"]
 
     response = openai.Image.create(
         prompt=dalle_prompt + " Style: digital art",
@@ -37,27 +42,35 @@ def slide_generator(text, prs):
 
     prompt = f"Create a bullet point text for a Powerpoint" \
              f"slide from the following text: \n {text}"
-    ppt = openai.Completion.create(
-        engine=model_engine,
-        prompt=prompt,
+    ppt = openai.ChatCompletion.create(
+        model=model_engine,
+        messages=[
+            {"role": "user", "content": "I will ask you a question"},
+            {"role": "assistant", "content": "Ok"},
+            {"role": "user", "content": f"{prompt}"}
+        ],
         max_tokens=1024,
         n=1,
         stop=None,
         temperature=0.8
     )
-    ppt_text = ppt.choices[0].text
+    ppt_text = ppt["choices"][0]["message"]["content"]
 
     prompt = f"Create a title for a Powerpoint" \
              f"slide from the following text: \n {text}"
-    ppt = openai.Completion.create(
-        engine=model_engine,
-        prompt=prompt,
+    ppt = openai.ChatCompletion.create(
+        model=model_engine,
+        messages=[
+            {"role": "user", "content": "I will ask you a question"},
+            {"role": "assistant", "content": "Ok"},
+            {"role": "user", "content": f"{prompt}"}
+        ],
         max_tokens=1024,
         n=1,
         stop=None,
         temperature=0.8
     )
-    ppt_header = ppt.choices[0].text
+    ppt_header = ppt["choices"][0]["message"]["content"]
 
     # Add a new slide to the presentation
     slide = prs.slides.add_slide(prs.slide_layouts[1])
@@ -88,6 +101,7 @@ def get_slides():
         slide_generator(paragraph, prs)
 
     prs.save("my_presentation.pptx")
+
 
 app = tk.Tk()
 app.title("Crate PPT Slides")
