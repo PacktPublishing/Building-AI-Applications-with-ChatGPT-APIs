@@ -46,7 +46,7 @@ class EssayGenerator(QWidget):
 
         length = int(self.length_dropdown.currentText())
 
-        engine = "text-davinci-003"
+        model = "gpt-4"
 
         prompt = f"Write an {length / 1.5} words essay on the following topic: {topic} \n\n"
 
