@@ -50,8 +50,18 @@ class EssayGenerator(QWidget):
 
         prompt = f"Write an {length / 1.5} words essay on the following topic: {topic} \n\n"
 
-        response = openai.Completion.create(engine=engine, prompt=prompt, max_tokens=length)
-        essay = response.choices[0].text
+        prompt = f"Write an {length / 1.5} words essay on the following topic: {topic} \n\n"
+
+        response = openai.ChatCompletion.create(
+            model=model,
+            messages=[
+                {"role": "user", "content": "You are a professional essay writer."},
+                {"role": "assistant", "content": "Ok"},
+                {"role": "user", "content": f"{prompt}"}
+            ],
+            max_tokens=length
+        )
+        essay = response["choices"][0]["message"]["content"]
 
         self.essay_output.setText(essay)
 
