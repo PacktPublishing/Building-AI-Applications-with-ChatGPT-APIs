@@ -49,9 +49,6 @@ class EssayGenerator(QWidget):
         model = "gpt-4"
 
         prompt = f"Write an {length / 1.5} words essay on the following topic: {topic} \n\n"
-
-        prompt = f"Write an {length / 1.5} words essay on the following topic: {topic} \n\n"
-
         response = openai.ChatCompletion.create(
             model=model,
             messages=[
