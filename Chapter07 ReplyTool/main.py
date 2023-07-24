@@ -33,17 +33,19 @@ label.pack()
 def reply():
     email = win32com.client.Dispatch("Outlook.Application").GetNamespace("MAPI").\
         GetDefaultFolder(6).Items.Item(selected_subject.get())
-    response = openai.Completion.create(
-        engine="text-davinci-003",
-        prompt="Create a reply to this email:\n" + email.Body,
+    response = openai.ChatCompletion.create(
+        model="gpt-4",
         max_tokens=1024,
         n=1,
-        stop=None,
-        temperature=0.8,
+        messages=[
+            {"role": "user", "content": "You are a professional email writer"},
+            {"role": "assistant", "content": "Ok"},
+            {"role": "user", "content": "Create a reply to this email:\n + Is the report ready?"}
+        ]
     )
 
     reply = email.Reply()
-    reply.Body = response["choices"][0]["text"]
+    reply.Body = response["choices"][0]["message"]["content"]
 
     reply.Display()
     return
