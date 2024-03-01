@@ -12,7 +12,7 @@ response = client.chat.completions.create(
     messages=[
         {"role": "user", "content": f"{question}"},
     ],
-    max_tokens=20,
+    max_tokens=512,
     n=1,
     stop=None,
     temperature=0.8,
