@@ -1,14 +1,11 @@
-import openai
-from . import config
-
-# API Token
-openai.api_key = config.API_KEY
-
 import sqlite3
-import openai
+from openai import OpenAI
 from . import config
+
 # API Token
-openai.api_key = config.API_KEY
+client = OpenAI(
+  api_key=config.API_KEY,
+)
 
 def initialize_database():
     # Connect to the SQLite database
@@ -33,20 +30,16 @@ def generate_questions(text):
              f"Under the possible answers we should have the correct answer."
 
     # Generate questions using the ChatGPT API
-    response = openai.ChatCompletion.create(
+    response = client.chat.completions.create(
         model="gpt-3.5-turbo",
-        messages=[
-            {"role": "user", "content": "You are professional questions writer."},
-            {"role": "assistant", "content": "Ok"},
-            {"role": "user", "content": f"{prompt}"}
-        ],
+        messages=[{"role": "user", "content": f"{prompt}"}],
         max_tokens = 3500,
         stop = None,
         temperature = 0.7
     )
 
     # Extract the generated questions from the API response
-    questions = response["choices"][0]["message"]["content"]
+    questions = response.choices[0].message.content
 
     # Generate a unique key for the question
     base_key = ' '.join(text.split()[:2])
@@ -76,5 +69,4 @@ def print_all_questions():
     cursor.execute("SELECT * FROM questions")
     rows = cursor.fetchall()
     return rows
-
 
