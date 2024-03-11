@@ -1,10 +1,12 @@
-import openai
+from openai import OpenAI
 import docx
 import tkinter as tk
 from tkinter import filedialog
 import config
 
-openai.api_key = config.API_KEY
+client = OpenAI(
+  api_key=config.API_KEY,
+)
 
 def translate_text(file_location, target_language):
     doc = docx.Document(file_location)
@@ -14,7 +16,7 @@ def translate_text(file_location, target_language):
 
 
     model_engine = "gpt-3.5-turbo"
-    response = openai.ChatCompletion.create(
+    response = client.chat.completions.create(
         model=model_engine,
         messages=[
             {"role": "user", "content": "You are a professional language translator. "
@@ -26,7 +28,7 @@ def translate_text(file_location, target_language):
         ]
     )
 
-    translated_text = response["choices"][0]["message"]["content"]
+    translated_text = response.choices[0].message.content
 
     return translated_text
 
