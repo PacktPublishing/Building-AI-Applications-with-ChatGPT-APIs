@@ -1,10 +1,11 @@
-import openai
+from openai import OpenAI
 import win32com.client
 import tkinter as tk
 import config
 
-openai.api_key = config.API_KEY
-
+client = OpenAI(
+  api_key=config.API_KEY,
+)
 
 def last_10_emails():
     outlook = win32com.client.Dispatch("Outlook.Application").GetNamespace("MAPI")
@@ -33,7 +34,7 @@ label.pack()
 def reply():
     email = win32com.client.Dispatch("Outlook.Application").GetNamespace("MAPI").\
         GetDefaultFolder(6).Items.Item(selected_subject.get())
-    response = openai.ChatCompletion.create(
+    response = client.chat.completions.create(
         model="gpt-4",
         max_tokens=1024,
         n=1,
@@ -45,7 +46,7 @@ def reply():
     )
 
     reply = email.Reply()
-    reply.Body = response["choices"][0]["message"]["content"]
+    reply.Body = response.choices[0].message.content
 
     reply.Display()
     return
@@ -56,3 +57,4 @@ button = tk.Button(root, text="Generate Reply",
 button.pack()
 
 root.mainloop()
+
