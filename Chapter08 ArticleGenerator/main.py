@@ -47,7 +47,7 @@ class EssayGenerator(QWidget):
 
     def generate_essay(self):
         topic = self.topic_input.text()
-        length = 500
+        length = int(self.length_dropdown.currentText())
 
         model = "gpt-4"
 
