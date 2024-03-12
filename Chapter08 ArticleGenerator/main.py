@@ -1,10 +1,12 @@
 import sys
 from PyQt6.QtWidgets import QApplication, QWidget, QLabel, QLineEdit, QPushButton, QTextEdit, QComboBox
-import openai
+from openai import OpenAI
 import docx
 import config
-openai.api_key = config.API_KEY
 
+client = OpenAI(
+  api_key=config.API_KEY,
+)
 class EssayGenerator(QWidget):
 
     def __init__(self):
@@ -49,7 +51,7 @@ class EssayGenerator(QWidget):
         model = "gpt-4"
 
         prompt = f"Write an {length / 1.5} words essay on the following topic: {topic} \n\n"
-        response = openai.ChatCompletion.create(
+        response = client.chat.completions.create(
             model=model,
             messages=[
                 {"role": "user", "content": "You are a professional essay writer."},
@@ -58,7 +60,7 @@ class EssayGenerator(QWidget):
             ],
             max_tokens=length
         )
-        essay = response["choices"][0]["message"]["content"]
+        essay = response.choices[0].message.content
 
         self.essay_output.setText(essay)
 
