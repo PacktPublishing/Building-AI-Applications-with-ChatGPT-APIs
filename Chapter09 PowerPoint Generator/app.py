@@ -5,20 +5,21 @@ assert collections
 import tkinter as tk
 from pptx import Presentation
 from pptx.util import Inches, Pt
-import openai
+from openai import OpenAI
 from io import BytesIO
 import requests
 
 # API Token
-openai.api_key = config.API_KEY
-
+client = OpenAI(
+  api_key=config.API_KEY,
+)
 
 def slide_generator(text, prs):
     prompt = f"Summarize the following text to a DALL-E image generation " \
              f"prompt: \n {text}"
 
     model_engine = "gpt-4"
-    dlp = openai.ChatCompletion.create(
+    dlp = client.chat.completions.create(
         model=model_engine,
         messages=[
             {"role": "user", "content": "I will ask you a question"},
@@ -31,18 +32,19 @@ def slide_generator(text, prs):
         temperature=0.8
     )
 
-    dalle_prompt = dlp["choices"][0]["message"]["content"]
+    dalle_prompt = dlp.choices[0].message.content
 
-    response = openai.Image.create(
+    response = client.images.generate(
+        model="dall-e-3",
         prompt=dalle_prompt + " Style: digital art",
         n=1,
         size="1024x1024"
     )
-    image_url = response['data'][0]['url']
+    image_url = response.data[0].url
 
     prompt = f"Create a bullet point text for a Powerpoint" \
              f"slide from the following text: \n {text}"
-    ppt = openai.ChatCompletion.create(
+    ppt = client.chat.completions.create(
         model=model_engine,
         messages=[
             {"role": "user", "content": "I will ask you a question"},
@@ -54,11 +56,11 @@ def slide_generator(text, prs):
         stop=None,
         temperature=0.8
     )
-    ppt_text = ppt["choices"][0]["message"]["content"]
+    ppt_text = ppt.choices[0].message.content
 
     prompt = f"Create a title for a Powerpoint" \
              f"slide from the following text: \n {text}"
-    ppt = openai.ChatCompletion.create(
+    ppt = client.chat.completions.create(
         model=model_engine,
         messages=[
             {"role": "user", "content": "I will ask you a question"},
@@ -70,7 +72,7 @@ def slide_generator(text, prs):
         stop=None,
         temperature=0.8
     )
-    ppt_header = ppt["choices"][0]["message"]["content"]
+    ppt_header = ppt.choices[0].message.content
 
     # Add a new slide to the presentation
     slide = prs.slides.add_slide(prs.slide_layouts[1])
