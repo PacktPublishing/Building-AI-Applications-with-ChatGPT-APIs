@@ -1,12 +1,10 @@
-import openai
+from openai import OpenAI
 import config
-
-# Set up OpenAI API credentials
-openai.api_key = config.API_KEY
+client = OpenAI(api_key=config.API_KEY)
 
 # Define a function for chat completion
 def chat_with_model(messages):
-    response = openai.ChatCompletion.create(
+    response = client.chat.completions.create(
         model="gpt-3.5-turbo",
         messages=messages
     )
