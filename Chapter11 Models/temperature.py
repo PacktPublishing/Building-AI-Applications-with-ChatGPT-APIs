@@ -1,23 +1,21 @@
-import openai
+from openai import OpenAI
 import config
 
-# Set up OpenAI API credentials
-openai.api_key = config.API_KEY
+client = OpenAI(api_key=config.API_KEY)
 
 # Define a function to generate a response from ChatGPT
 def generate_response(prompt, temperature):
-    response = openai.Completion.create(
-        engine='text-davinci-003',
-        prompt=prompt,
-        temperature=temperature,
-        max_tokens=50,
-        n=1,
-        stop=None,
+    response = client.chat.completions.create(
+        model="gpt-3.5-turbo",
+        messages=[
+            {"role": "user", "content": f"{prompt}"}
+        ],
+        temperature=temperature
     )
-    return response.choices[0].text.strip()
+    return response.choices[0].message.content.strip()
 
 # Prompt for the conversation
-prompt = "Suggest 4 names for a cat."
+prompt = "Suggest 4 fast food company names."
 
 # Generate a response with low temperature (more focused and deterministic)
 for i in range(3):
