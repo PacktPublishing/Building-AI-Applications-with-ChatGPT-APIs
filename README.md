@@ -1,23 +1,24 @@
-# Building AI Applications with ChatGPT APIs
+# Building AI Applications with OpenAI APIs
 
-<a href="https://www.packtpub.com/product/building-ai-applications-with-chatgpt-api/9781805127567"><img src="https://content.packt.com/B21110/cover_image_small.jpg" alt="Book Name" height="256px" align="right"></a>
+<a href="https://www.packtpub.com/en-us/product/building-ai-applications-with-openai-apis-9781835884003"><img src="https://content.packt.com/_/image/xxlarge/B22414/cover_image_large.jpg" alt="Book Name" height="256px" align="right"></a>
 
-This is the code repository for [Building AI Applications with ChatGPT APIs](https://www.packtpub.com/product/building-ai-applications-with-chatgpt-api/9781805127567), published by Packt.
+This is the code repository for [Building AI Applications with OpenAI APIs](https://www.packtpub.com/en-us/product/building-ai-applications-with-openai-apis-9781835884003), published by Packt.
 
-**Master ChatGPT, Whisper, and DALL-E APIs by building ten innovative AI projects**
+**Leverage ChatGPT, Whisper, and DALL-E APIs to build 10 innovative AI projects**
 
 ## What is this book about?
-Combining ChatGPT APIs with Python opens doors to building extraordinary AI applications. By leveraging these APIs, you can focus on the application logic and user experience, while ChatGPT’s robust NLP capabilities handle the intricacies of human-like text understanding and generation.
+Unlock the power of AI in your applications with ChatGPT with this practical guide that shows you how to seamlessly integrate OpenAI APIs into your projects, enabling you to navigate complex APIs and ensure seamless functionality with ease.
 
 This book covers the following exciting features:
-* Develop a solid foundation in using the ChatGPT API for natural language processing tasks
-* Build, deploy, and capitalize on a variety of desktop and SaaS AI applications
-* Seamlessly integrate ChatGPT with established frameworks such as Flask, Django, and Microsoft Office APIs
-* Channel your creativity by integrating DALL-E APIs to produce stunning AI-generated art within your desktop applications
-* Experience the power of Whisper API's speech recognition and text-to-speech features
-* Discover techniques to optimize ChatGPT models through the process of fine-tuning
+* Develop a solid foundation in using the OpenAI API for NLP tasks
+* Build, deploy, and integrate payments into various desktop and SaaS AI applications
+* Integrate ChatGPT with frameworks such as Flask, Django, and Microsoft Office APIs
+* Unleash your creativity by integrating DALL-E APIs to generate stunning AI art within your desktop apps
+* Experience the power of Whisper API’s speech recognition and text-to-speech features
+* Find out how to fine-tune ChatGPT models for your specific use case
+* Master AI embeddings to measure the relatedness of text strings
 
-If you feel this book is for you, get your [copy](https://www.amazon.com/dp/180512756X) today!
+If you feel this book is for you, get your [copy]([https://www.amazon.com/dp/180512756X](https://www.amazon.com/Building-Applications-OpenAI-APIs-DALL/dp/B0DCNGRY9S/ref=tmm_pap_swatch_0?_encoding=UTF8&dib_tag=se&dib=eyJ2IjoiMSJ9.FljsAfIYM0OP1p77_teXQBl1JXq9afhKr5XQfUmQaF23i6u7J2yriWESjpNqwY9kKSJvmwQH-uT8spgJFv7mWw.8Rro44Y8HjuoQnG0tKQeXZq5tBj4eb8ogNd90zmMn80&qid=1725986374&sr=8-1)) today!
 
 <a href="https://www.packtpub.com/?utm_source=github&utm_medium=banner&utm_campaign=GitHubBanner"><img src="https://raw.githubusercontent.com/PacktPublishing/GitHub/master/GitHub.png" 
 alt="https://www.packtpub.com/" border="5" /></a>
@@ -28,18 +29,12 @@ All of the code is organized into folders. For example, Chapter02.
 
 The code will look like the following:
 ```
-response = openai.Completion.create(
-    engine="text-davinci-003",
-    prompt=question,
-    max_tokens=1024,
-    n=1,
-    stop=None,
-    temperature=0.8,
-)
+from openai import OpenAI
+client = OpenAI(api_key="YOUR_API_KEY")
 ```
 
 **Following is what you need for this book:**
-with best practices, tips, and tricks for building applications using the ChatGPT API, this book is for programmers, entrepreneurs, and software enthusiasts. Python developers interested in AI applications involving ChatGPT, software developers who want to integrate AI technology, and web developers looking to create AI-powered web applications with ChatGPT will also find this book useful. A fundamental understanding of Python programming and experience of working with APIs will help you make the most of this book.
+This book is for a diverse range of professionals, including programmers, entrepreneurs, and software enthusiasts. Beginner programmers, Python developers exploring AI applications with ChatGPT, software developers integrating AI technology, and web developers creating AI-powered web applications with ChatGPT will find this book beneficial. Scholars and researchers working on AI projects with ChatGPT will also find it valuable. Basic knowledge of Python and familiarity with APIs is needed to understand the topics covered in this book.
 
 With the following software and hardware list you can run all code files present in the book (Chapter 1-12).
 
@@ -53,12 +48,11 @@ With the following software and hardware list you can run all code files present
 | 1-12        | PyQt            | Windows, macOS, or Linux |
 | 1-12       | OpenAI library           | Windows, macOS, or Linux |
 | 1-12        | Stripe            | Windows, macOS, or Linux |
-| 1-12        | Azure CLI        | Windows, macOS, or Linux |
 
 ### Related products
-* Exploring GPT-3 [[Packt]](https://www.packtpub.com/product/exploring-gpt-3/9781800563193) [[Amazon]](https://www.amazon.com/Exploring-GPT-3-unofficial-general-purpose-processing/dp/1800563191)
+* OpenAI API Cookbook [[Packt]](https://www.packtpub.com/en-us/product/openai-api-cookbook-9781805121350?type=subscription) [[Amazon]](https://www.amazon.com/dp/1805121359)
 
-* Building Data Science Applications with FastAPI - Second Edition [[Packt]](https://www.packtpub.com/product/building-data-science-applications-with-fastapi-second-edition/9781837632749/) [[Amazon]](https://www.amazon.com/Building-Data-Science-Applications-FastAPI/dp/183763274X/)
+* Generative AI Foundations in Python [[Packt]](https://www.packtpub.com/en-us/product/generative-ai-foundations-in-python-9781835460825?type=subscription) [[Amazon]](https://www.amazon.com/dp/1835460828)
 
 ## Get to Know the Author
-**Martin Yanev** is an experienced Software Engineer who has worked in the aerospace and industries for over 8 years. He specializes in developing and integrating software solutions for air traffic control and chromatography systems. Martin is a well-respected instructor with over 280,000 students worldwide, and he is skilled in using frameworks like Flask, Django, Pytest, and TensorFlow. He is an expert in building, training, and fine-tuning AI systems with the full range of OpenAI APIs. Martin has dual master's degrees in Aerospace Systems and Software Engineering, which demonstrates his commitment to both practical and theoretical aspects of the industry.
+**Martin Yanev** is a highly accomplished software engineer with a wealth of expertise spanning diverse industries, including aerospace and medical technology. With an illustrious career of over eight years, Martin has carved a niche for himself in developing and seamlessly integrating cutting-edge software solutions for critical domains such as air traffic control and chromatography systems. Renowned as an esteemed instructor and a computer science professor at Fitchburg State University, Martin has empowered an impressive global community of over 280,000 students. His instructional prowess shines through as he imparts knowledge and guidance, leveraging his extensive proficiency in frameworks such as Flask, Django, pytest, and TensorFlow. Possessing a deep understanding of the complete spectrum of OpenAI APIs, Martin exhibits mastery in constructing, training, and fine-tuning AI systems. Martin’s commitment to excellence is exemplified by his dual master’s degrees in aerospace systems and software engineering. This remarkable academic achievement underscores his unwavering dedication to both the practical and theoretical facets of the industry. With his exceptional track record and multifaceted skill set, Martin continues to propel innovation and drive transformative advancements in the ever-evolving landscape of software engineering.
