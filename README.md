@@ -18,7 +18,7 @@ This book covers the following exciting features:
 * Find out how to fine-tune ChatGPT models for your specific use case
 * Master AI embeddings to measure the relatedness of text strings
 
-If you feel this book is for you, get your [copy]([https://www.amazon.com/dp/180512756X](https://www.amazon.com/Building-Applications-OpenAI-APIs-DALL/dp/B0DCNGRY9S/ref=tmm_pap_swatch_0?_encoding=UTF8&dib_tag=se&dib=eyJ2IjoiMSJ9.FljsAfIYM0OP1p77_teXQBl1JXq9afhKr5XQfUmQaF23i6u7J2yriWESjpNqwY9kKSJvmwQH-uT8spgJFv7mWw.8Rro44Y8HjuoQnG0tKQeXZq5tBj4eb8ogNd90zmMn80&qid=1725986374&sr=8-1)) today!
+If you feel this book is for you, get your [copy](https://www.amazon.com/dp/180512756X) today!
 
 <a href="https://www.packtpub.com/?utm_source=github&utm_medium=banner&utm_campaign=GitHubBanner"><img src="https://raw.githubusercontent.com/PacktPublishing/GitHub/master/GitHub.png" 
 alt="https://www.packtpub.com/" border="5" /></a>
